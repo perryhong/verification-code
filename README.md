@@ -20,7 +20,7 @@ yarn add @pekings/verification-code
 // 引入lib
 import VerificationCode from "@pekings/verification-code";
 
-<canvas id="v-code"></canvas>;
+<canvas width="200" height="100" id="v-code"></canvas>;
 
 const vCode = new VerificationCode(
   document.getElementById("v-code"),
