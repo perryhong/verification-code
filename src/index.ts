@@ -1,3 +1,5 @@
+import { getRand } from "./utils";
+
 interface VerificationCodeOptions {
   lineWidth: number;
   lineNum: number;
@@ -44,7 +46,7 @@ class VerificationCode {
 
     this.options = newOptions;
 
-    if (!Boolean(dom instanceof HTMLCanvasElement)) {
+    if (!(dom instanceof HTMLCanvasElement)) {
       throw new Error("Canvas DOM is required");
     }
 
@@ -63,17 +65,17 @@ class VerificationCode {
     this.callBack = callBack;
   }
 
-  getRand(arr: [number, number]) {
-    const newArr = [...arr];
-    newArr.sort((a, b) => a - b);
-    return Math.floor(Math.random() * (newArr[1] - newArr[0]) + newArr[0]);
-  }
+  // getRand(arr: [number, number]) {
+  //   const newArr = [...arr];
+  //   newArr.sort((a, b) => a - b);
+  //   return Math.floor(Math.random() * (newArr[1] - newArr[0]) + newArr[0]);
+  // }
 
   getColor(colorArea: [number, number]) {
     const colors: [number, number, number] = [
-      this.getRand(colorArea),
-      this.getRand(colorArea),
-      this.getRand(colorArea),
+      getRand(colorArea),
+      getRand(colorArea),
+      getRand(colorArea),
     ];
     return colors;
   }
@@ -82,7 +84,7 @@ class VerificationCode {
     const { content, len } = this.options;
     let str = "";
     for (let i = 0; i < len; i += 1) {
-      str += content[this.getRand([0, content.length])];
+      str += content[getRand([0, content.length])];
     }
     return str;
   }
@@ -92,10 +94,10 @@ class VerificationCode {
     const { lineNum, foreGroundColor } = this.options;
     const { width: canvasWidth, height: canvasHeight } = this.canvas;
     for (let i = 0; i < lineNum; i += 1) {
-      const startX = this.getRand([0, canvasWidth]),
-        startY = this.getRand([0, canvasHeight]),
-        endX = this.getRand([0, canvasWidth]),
-        endY = this.getRand([0, canvasHeight]),
+      const startX = getRand([0, canvasWidth]),
+        startY = getRand([0, canvasHeight]),
+        endX = getRand([0, canvasWidth]),
+        endY = getRand([0, canvasHeight]),
         colors = this.getColor(foreGroundColor);
       this.paint.strokeStyle = `rgba(${colors[0]},${colors[1]},${colors[2]},0.8)`;
       this.paint.beginPath();
@@ -110,8 +112,8 @@ class VerificationCode {
     if (!this.canvas || !this.paint) return;
     const { dotNum, dotR, foreGroundColor } = this.options;
     for (let i = 0; i < dotNum; i += 1) {
-      const x = this.getRand([0, this.canvas.width]),
-        y = this.getRand([0, this.canvas.height]),
+      const x = getRand([0, this.canvas.width]),
+        y = getRand([0, this.canvas.height]),
         colors = this.getColor(foreGroundColor);
       this.paint.fillStyle = `rgba(${colors[0]},${colors[1]},${colors[2]},0.8)`;
       this.paint.beginPath();
@@ -137,11 +139,11 @@ class VerificationCode {
     for (let i = 0; i < len; i += 1) {
       const textWidth = this.paint.measureText(text[i]).width;
       const leftX = (canvasWidth / len) * i;
-      const x = this.getRand([
+      const x = getRand([
         leftX + textWidth * 2,
         leftX + canvasWidth / len - textWidth * 2,
       ]);
-      const deg = this.getRand([-6, 6]);
+      const deg = getRand([-6, 6]);
       this.paint.save();
       this.paint[
         fontColorProper
