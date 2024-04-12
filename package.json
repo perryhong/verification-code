@@ -1,0 +1,36 @@
+{
+  "name": "@pekings/verification-code",
+  "version": "0.0.1",
+  "description": "Verification Code Library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/perryhong/verification-code"
+  },
+  "main": "dist/index.min.js",
+  "module": "dist/index.min.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "keywords": [
+    "Library",
+    "Verification Code"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && npm run build-es",
+    "build-es": "rollup --config rollup.config.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PEIQIN.HONG",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/node": "^20.12.7",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.14.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.4.5"
+  }
+}

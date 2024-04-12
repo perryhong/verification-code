@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <canvas width="200" height="100" id="vcode"></canvas>
+</body>
+<script src="./dist/index.umd.js"></script>
+<script>
+  const vcode = new VerificationCode.default(document.getElementById("vcode"), (code) => {
+    console.log(code)
+  })
+
+  vcode.draw()
+</script>
+</html>
