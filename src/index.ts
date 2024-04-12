@@ -61,10 +61,6 @@ class VerificationCode {
     }
 
     this.callBack = callBack;
-
-    this.canvas.addEventListener("click", () => {
-      this.drawAgain();
-    });
   }
 
   getRand(arr: [number, number]) {
