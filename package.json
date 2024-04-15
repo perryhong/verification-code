@@ -1,6 +1,6 @@
 {
   "name": "@pekings/verification-code",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Verification Code Library",
   "repository": {
     "type": "git",

@@ -25,7 +25,7 @@ class VerificationCode {
   constructor(
     dom: HTMLCanvasElement,
     callBack: CodeGetCallback,
-    options?: VerificationCodeOptions
+    options?: Partial<VerificationCodeOptions>
   ) {
     const newOptions: VerificationCodeOptions = Object.assign(
       {
