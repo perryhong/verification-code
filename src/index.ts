@@ -1,6 +1,6 @@
 import { getRand } from "./utils";
 
-interface VerificationCodeOptions {
+export interface VerificationCodeOptions {
   lineWidth: number;
   lineNum: number;
   dotNum: number;
