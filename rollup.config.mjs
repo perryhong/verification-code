@@ -5,6 +5,7 @@ const overrides = {
   compilerOptions: {
     declaration: true,
   },
+  exclude: ["src/jest-test/*.ts"],
 };
 
 const config = {
